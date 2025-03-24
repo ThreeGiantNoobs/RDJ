@@ -1,24 +1,15 @@
 import os
-import json
 
 import interactions
-from interactions import Client, listen, slash_command
 from dotenv import load_dotenv
+from interactions import Client, listen, slash_command
 
 from utils import get_song
 
-
 load_dotenv()
 
-with open('config.json') as config_file:
-    config = json.load(config_file)
-
-GUILDS = config['SERVERS']
-PREFIX = config['PREFIX']
-
 bot = Client(
-    token=os.getenv('DISCORD_TOKEN'),
-    default_scope=GUILDS
+    token=os.getenv('DISCORD_TOKEN')
 )
 
 
@@ -88,5 +79,6 @@ async def leave_voice_channel(ctx: interactions.SlashContext):
         await ctx.send('Left voice channel')
     else:
         await ctx.send('I am not in a voice channel')
+
 
 bot.start()

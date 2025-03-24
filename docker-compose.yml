@@ -1,0 +1,6 @@
+services:
+  rdj:
+    build:
+      dockerfile: Dockerfile
+    command: sh -c "python bot.py"
+    restart: always
